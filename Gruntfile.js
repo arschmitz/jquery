@@ -10,7 +10,8 @@ module.exports = function( grunt ) {
 	}
 
 	var gzip = require( "gzip-js" ),
-		srcHintOptions = readOptionalJSON( "src/.jshintrc" );
+		srcHintOptions = readOptionalJSON( "src/.jshintrc" ),
+		phpPort = Math.floor( 8000 + Math.random() * 1000 );
 
 	// The concatenated file won't pass onevar
 	// But our modules can
@@ -146,6 +147,32 @@ module.exports = function( grunt ) {
 					}
 				}
 			}
+		},
+		verbosity: {
+			option1: {
+				options: {
+					mode: "hidden",
+					tasks: [ "php" ]
+				}
+			}
+		},
+		php: {
+			server: {
+				options: {
+					port: phpPort,
+					baseUrl: "."
+				}
+			}
+		},
+		qunit: {
+			all: {
+				options: {
+					urls:[ "http://localhost:" + phpPort + "/test/" ],
+					page: {
+						viewportSize: { width: 700, height: 500 }
+					}
+				}
+			}
 		}
 	});
 
@@ -154,6 +181,14 @@ module.exports = function( grunt ) {
 
 	// Integrate jQuery specific tasks
 	grunt.loadTasks( "build/tasks" );
+
+	grunt.registerTask( "test",
+		[
+			"dev",
+			"php",
+			"qunit"
+		]
+	);
 
 	grunt.registerTask( "lint", [ "jshint", "jscs" ] );
 
