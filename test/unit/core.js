@@ -1499,12 +1499,13 @@ test("jQuery.camelCase()", function() {
 		equal( jQuery.camelCase( key ), val, "Converts: " + key + " => " + val );
 	});
 });
-
+/* tests using testIframeWithCallback currently timeout in phantomjs */
 testIframeWithCallback( "Conditional compilation compatibility (#13274)", "core/cc_on.html", function( cc_on, errors, $ ) {
 	expect( 3 );
 	ok( true, "JScript conditional compilation " + ( cc_on ? "supported" : "not supported" ) );
 	deepEqual( errors, [], "No errors" );
 	ok( $(), "jQuery executes" );
+	console.log( "done" );
 });
 
 // iOS7 doesn't fire the load event if the long-loading iframe gets its source reset to about:blank.

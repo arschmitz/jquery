@@ -44,7 +44,6 @@
     "grunt-jsonlint": "1.0.4",
     "grunt-npmcopy": "0.1.0",
     "grunt-php": "0.3.2",
-    "grunt-verbosity": "0.2.2",
     "gzip-js": "0.3.2",
     "load-grunt-tasks": "0.6.0",
     "npm": "1.4.21",

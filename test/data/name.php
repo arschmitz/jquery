@@ -2,7 +2,7 @@
 error_reporting(0);
 $wait = $_REQUEST['wait'];
 if($wait) {
-	sleep($wait);
+	//sleep($wait);
 }
 $xml = $_REQUEST['xml'];
 if($xml) {

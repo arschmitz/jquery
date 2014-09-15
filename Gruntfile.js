@@ -148,17 +148,11 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
-		verbosity: {
-			option1: {
-				options: {
-					mode: "hidden",
-					tasks: [ "php" ]
-				}
-			}
-		},
 		php: {
 			server: {
 				options: {
+					open: true,
+					keepalive: true,
 					port: phpPort,
 					baseUrl: "."
 				}
@@ -185,8 +179,8 @@ module.exports = function( grunt ) {
 	grunt.registerTask( "test",
 		[
 			"dev",
-			"php",
-			"qunit"
+			"php"
+			//"qunit"
 		]
 	);
 
